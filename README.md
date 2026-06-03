@@ -8,6 +8,12 @@
   Ask one question to multiple AIs. They debate each other — you get one unified answer.
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/ahmetrende/ai-orchestra?color=8b5cf6" alt="Release" />
+  <img src="https://img.shields.io/github/license/ahmetrende/ai-orchestra?color=6c8cff" alt="License" />
+  <img src="https://img.shields.io/badge/platform-macOS-lightgrey" alt="Platform" />
+</p>
+
 ---
 
 ## What it does
@@ -56,6 +62,18 @@ Your question
               One unified answer
 ```
 
+## Download
+
+Grab the latest `.dmg` from the [Releases page](https://github.com/ahmetrende/ai-orchestra/releases).
+
+> **Note:** the app is not notarized (no paid Apple Developer account yet), so macOS
+> Gatekeeper will warn you on first launch. To open it:
+>
+> - **Right-click** the app → **Open** → **Open**, or
+> - run once in Terminal: `xattr -dr com.apple.quarantine "/Applications/AI Orchestra.app"`
+>
+> Or just run it from source (below).
+
 ## Getting started
 
 You need API keys for the providers you want to use
@@ -97,9 +115,23 @@ This folder is kept even if you delete and reinstall the app.
 
 Electron · vanilla JS (no build step) · `marked` + `highlight.js` for Markdown/code rendering.
 
+## Credits
+
+Built with these open-source projects (bundled in `src/vendor/`):
+
+- [marked](https://github.com/markedjs/marked) — Markdown parser (MIT)
+- [highlight.js](https://github.com/highlightjs/highlight.js) — code syntax highlighting (BSD-3-Clause)
+- [DOMPurify](https://github.com/cure53/DOMPurify) — HTML sanitizer (Apache-2.0 / MPL-2.0)
+- [@lobehub/icons](https://github.com/lobehub/lobe-icons) — AI provider brand logos (MIT)
+- [Electron](https://github.com/electron/electron) — desktop runtime (MIT)
+
+Provider names and logos (OpenAI, Claude, Google Gemini, …) are trademarks of their
+respective owners and are used only to indicate compatibility.
+
 ## License
 
 MIT
+
 
 ---
 
