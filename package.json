@@ -1,0 +1,37 @@
+{
+  "name": "ai-orchestra",
+  "version": "1.0.0",
+  "description": "Ask one question to multiple AIs — they debate each other and you get one unified answer. macOS desktop app.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.ahmetrende.aiorchestra",
+    "productName": "AI Orchestra",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "files": [
+      "src/**/*"
+    ]
+  },
+  "dependencies": {
+    "@highlightjs/cdn-assets": "^11.11.1",
+    "@lobehub/icons-static-svg": "^1.91.0",
+    "dompurify": "^3.4.7",
+    "marked": "^18.0.4",
+    "simple-icons": "^16.21.0"
+  }
+}

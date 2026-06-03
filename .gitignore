@@ -1,0 +1,23 @@
+# Bağımlılıklar
+node_modules/
+
+# Derleme çıktıları
+dist/
+build/icon-master.png
+build/icon-1254.png
+build/user-icon.png
+build/icons-sheet.png
+build/icon.iconset/
+build/*.log
+
+# Yerel kullanıcı verisi (asla repoya girmemeli)
+config.json
+history.json
+models-cache.json
+*.local
+
+# OS / editör
+.DS_Store
+*.log
+.vscode/
+.idea/

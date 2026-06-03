@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html, body { margin: 0; padding: 0; width: 1280px; height: 640px; background: transparent; }
+      svg { display: block; }
+    </style>
+  </head>
+  <body>
+    <svg width="1280" height="640" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#2B2E36" /><stop offset="1" stop-color="#15171D" />
+        </linearGradient>
+        <radialGradient id="hl" cx="0.7" cy="0.3" r="0.7">
+          <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.16" />
+          <stop offset="0.7" stop-color="#8B5CF6" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="coral" gradientUnits="userSpaceOnUse" x1="820" y1="0" x2="1000" y2="0">
+          <stop offset="0" stop-color="#FF8A6B" /><stop offset="1" stop-color="#FF5E6C" />
+        </linearGradient>
+        <linearGradient id="violet" gradientUnits="userSpaceOnUse" x1="820" y1="0" x2="1000" y2="0">
+          <stop offset="0" stop-color="#B07CFF" /><stop offset="1" stop-color="#8E5CFF" />
+        </linearGradient>
+        <linearGradient id="blue" gradientUnits="userSpaceOnUse" x1="820" y1="0" x2="1000" y2="0">
+          <stop offset="0" stop-color="#55B2FF" /><stop offset="1" stop-color="#4F8CFF" />
+        </linearGradient>
+        <linearGradient id="fusion" gradientUnits="userSpaceOnUse" x1="995" y1="0" x2="1180" y2="0">
+          <stop offset="0" stop-color="#FF7E6B" /><stop offset="0.5" stop-color="#C76BFF" /><stop offset="1" stop-color="#5FD4FF" />
+        </linearGradient>
+        <filter id="glow" filterUnits="userSpaceOnUse" x="950" y="250" width="300" height="140">
+          <feGaussianBlur stdDeviation="8" result="b" />
+          <feMerge><feMergeNode in="b" /><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <radialGradient id="burst" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8" />
+          <stop offset="0.4" stop-color="#D9A8FF" stop-opacity="0.4" />
+          <stop offset="1" stop-color="#D9A8FF" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <rect width="1280" height="640" fill="url(#bg)" />
+      <rect width="1280" height="640" fill="url(#hl)" />
+
+      <!-- Sol: metin -->
+      <text x="90" y="262" font-family="-apple-system, Helvetica, Arial" font-size="86" font-weight="800" fill="#ffffff">AI Orchestra</text>
+      <text x="93" y="322" font-family="-apple-system, Helvetica, Arial" font-size="29" fill="#aab0bd">Ask one question to multiple AIs.</text>
+      <text x="93" y="362" font-family="-apple-system, Helvetica, Arial" font-size="29" fill="#aab0bd">They debate — you get one unified answer.</text>
+      <text x="93" y="438" font-family="-apple-system, Helvetica, Arial" font-size="21" font-weight="600" fill="#7f8696" letter-spacing="1">Claude  ·  ChatGPT  ·  Gemini  ·  + custom</text>
+
+      <!-- Sag: fuzyon grafigi -->
+      <g fill="none" stroke-linecap="round" stroke-width="26">
+        <path d="M820 320 H 980" stroke="url(#violet)" />
+        <path d="M820 230 C 905 230 925 320 990 320" stroke="url(#coral)" />
+        <path d="M820 410 C 905 410 925 320 990 320" stroke="url(#blue)" />
+      </g>
+      <circle cx="990" cy="320" r="46" fill="url(#burst)" />
+      <path d="M988 320 H 1170" fill="none" stroke="url(#fusion)" stroke-width="30" stroke-linecap="round" filter="url(#glow)" />
+    </svg>
+  </body>
+</html>

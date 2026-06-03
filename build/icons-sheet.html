@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html, body { margin: 0; padding: 0; background: #0f1117; }
+      .sheet { width: 1120px; padding: 40px; box-sizing: border-box; display: grid;
+               grid-template-columns: repeat(3, 320px); gap: 40px 40px; }
+      .cell { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      .lbl { color: #e7e9ee; font: 600 17px -apple-system, Helvetica, Arial; }
+      svg { display: block; border-radius: 72px; }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <!-- 1: Hairline A monogram (koyu) -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <defs><linearGradient id="d1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1C1F29"/><stop offset="1" stop-color="#0D0F14"/></linearGradient></defs>
+          <rect width="320" height="320" rx="72" fill="url(#d1)"/>
+          <g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M112 232 L160 92 L208 232"/>
+            <path d="M132 184 L188 184"/>
+          </g>
+        </svg>
+        <div class="lbl">1 — İnce A monogram</div>
+      </div>
+
+      <!-- 2: 4-koseli kivilcim (Apple Intelligence vibe) -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <defs><linearGradient id="d2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1C1F29"/><stop offset="1" stop-color="#0D0F14"/></linearGradient></defs>
+          <rect width="320" height="320" rx="72" fill="url(#d2)"/>
+          <path d="M160 70 C168 132 188 152 250 160 C188 168 168 188 160 250 C152 188 132 168 70 160 C132 152 152 132 160 70 Z" fill="#ffffff"/>
+        </svg>
+        <div class="lbl">2 — Kıvılcım</div>
+      </div>
+
+      <!-- 3: Ic ice ince halkalar -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <defs><linearGradient id="d3" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1C1F29"/><stop offset="1" stop-color="#0D0F14"/></linearGradient></defs>
+          <rect width="320" height="320" rx="72" fill="url(#d3)"/>
+          <g fill="none" stroke="#ffffff" stroke-width="10">
+            <circle cx="130" cy="160" r="60"/>
+            <circle cx="190" cy="160" r="60"/>
+          </g>
+        </svg>
+        <div class="lbl">3 — İç içe halkalar</div>
+      </div>
+
+      <!-- 4: Kivilcim - acik tema (premium light) -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <defs><linearGradient id="d4" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F4F3F0"/><stop offset="1" stop-color="#E6E5E1"/></linearGradient></defs>
+          <rect width="320" height="320" rx="72" fill="url(#d4)"/>
+          <path d="M160 74 C167 132 188 153 246 160 C188 167 167 188 160 246 C153 188 132 167 74 160 C132 153 153 132 160 74 Z" fill="#16181d"/>
+        </svg>
+        <div class="lbl">4 — Kıvılcım (açık)</div>
+      </div>
+
+      <!-- 5: Merkez nokta + ince yorunge -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <defs><linearGradient id="d5" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1C1F29"/><stop offset="1" stop-color="#0D0F14"/></linearGradient></defs>
+          <rect width="320" height="320" rx="72" fill="url(#d5)"/>
+          <g stroke="#ffffff" fill="none">
+            <ellipse cx="160" cy="160" rx="104" ry="46" stroke-width="8" transform="rotate(-22 160 160)" opacity="0.85"/>
+            <ellipse cx="160" cy="160" rx="104" ry="46" stroke-width="8" transform="rotate(38 160 160)" opacity="0.45"/>
+          </g>
+          <circle cx="160" cy="160" r="22" fill="#ffffff"/>
+        </svg>
+        <div class="lbl">5 — Yörünge</div>
+      </div>
+
+      <!-- 6: Ince birlesim cizgileri + violet aksan -->
+      <div class="cell">
+        <svg width="320" height="320" viewBox="0 0 320 320">
+          <rect width="320" height="320" rx="72" fill="#0C0D11"/>
+          <g stroke="#3a3f4d" stroke-width="9" stroke-linecap="round">
+            <line x1="160" y1="160" x2="160" y2="86"/>
+            <line x1="160" y1="160" x2="96"  y2="216"/>
+            <line x1="160" y1="160" x2="224" y2="216"/>
+          </g>
+          <g fill="#6f6f7d">
+            <circle cx="160" cy="86"  r="15"/>
+            <circle cx="96"  cy="216" r="15"/>
+            <circle cx="224" cy="216" r="15"/>
+          </g>
+          <circle cx="160" cy="160" r="26" fill="#8B5CF6"/>
+        </svg>
+        <div class="lbl">6 — İnce birleşim</div>
+      </div>
+    </div>
+  </body>
+</html>

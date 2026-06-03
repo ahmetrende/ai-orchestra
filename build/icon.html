@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html, body { margin: 0; padding: 0; width: 1024px; height: 1024px; background: transparent; }
+      svg { display: block; }
+    </style>
+  </head>
+  <body>
+    <!-- 1024 cikti, 320 koordinat sistemi (rx 72 -> 230) -->
+    <svg width="1024" height="1024" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- antrasit zemin -->
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#3A3D45" />
+          <stop offset="1" stop-color="#26282E" />
+        </linearGradient>
+        <radialGradient id="hl" cx="0.3" cy="0.22" r="0.95">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0.07" />
+          <stop offset="0.6" stop-color="#ffffff" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- giris cizgileri -->
+        <linearGradient id="coral" gradientUnits="userSpaceOnUse" x1="48" y1="0" x2="206" y2="0">
+          <stop offset="0" stop-color="#FF8A6B" /><stop offset="1" stop-color="#FF5E6C" />
+        </linearGradient>
+        <linearGradient id="violet" gradientUnits="userSpaceOnUse" x1="48" y1="0" x2="206" y2="0">
+          <stop offset="0" stop-color="#B07CFF" /><stop offset="1" stop-color="#8E5CFF" />
+        </linearGradient>
+        <linearGradient id="blue" gradientUnits="userSpaceOnUse" x1="48" y1="0" x2="206" y2="0">
+          <stop offset="0" stop-color="#55B2FF" /><stop offset="1" stop-color="#4F8CFF" />
+        </linearGradient>
+
+        <!-- VOLTRAN: uc rengin fuzyonu - iridesan gradyan -->
+        <linearGradient id="fusion" gradientUnits="userSpaceOnUse" x1="202" y1="0" x2="274" y2="0">
+          <stop offset="0" stop-color="#FF7E6B" />
+          <stop offset="0.45" stop-color="#C76BFF" />
+          <stop offset="1" stop-color="#5FD4FF" />
+        </linearGradient>
+
+        <!-- enerji parlamasi (glow) - yatay cizgide bbox cokmesin diye sabit bolge -->
+        <filter id="glow" filterUnits="userSpaceOnUse" x="160" y="100" width="160" height="120">
+          <feGaussianBlur stdDeviation="7" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        <!-- birlesme noktasinda isik patlamasi -->
+        <radialGradient id="burst" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.85" />
+          <stop offset="0.35" stop-color="#D9A8FF" stop-opacity="0.45" />
+          <stop offset="1" stop-color="#D9A8FF" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <rect width="320" height="320" rx="72" fill="url(#bg)" />
+      <rect width="320" height="320" rx="72" fill="url(#hl)" />
+
+      <!-- uc giris cizgisi -->
+      <g fill="none" stroke-linecap="round" stroke-width="28">
+        <path d="M48 160 H 200" stroke="url(#violet)" />
+        <path d="M48 100 C 128 100 146 160 206 160" stroke="url(#coral)" />
+        <path d="M48 220 C 128 220 146 160 206 160" stroke="url(#blue)" />
+      </g>
+
+      <!-- birlesme noktasi: enerji patlamasi -->
+      <circle cx="206" cy="160" r="46" fill="url(#burst)" />
+
+      <!-- VOLTRAN cizgisi: uc rengin fuzyonu, parlamali ve daha kalin -->
+      <path d="M204 160 H 272" fill="none" stroke="url(#fusion)"
+            stroke-width="32" stroke-linecap="round" filter="url(#glow)" />
+    </svg>
+  </body>
+</html>
