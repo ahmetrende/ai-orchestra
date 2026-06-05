@@ -64,15 +64,19 @@ Your question
 
 ## Download
 
-Grab the latest `.dmg` from the [Releases page](https://github.com/ahmetrende/ai-orchestra/releases).
+Grab the latest `.dmg` from the [Releases page](https://github.com/ahmetrende/ai-orchestra/releases),
+open it, and drag **AI Orchestra** into Applications.
 
-> **Note:** the app is not notarized (no paid Apple Developer account yet), so macOS
-> Gatekeeper will warn you on first launch. To open it:
+> **First launch on macOS.** The app is signed but not notarized (no paid Apple Developer
+> account yet), so macOS blocks it the first time. If you see **"AI Orchestra is damaged"**
+> or **"unidentified developer"**, run this once in Terminal — it clears the download flag:
 >
-> - **Right-click** the app → **Open** → **Open**, or
-> - run once in Terminal: `xattr -dr com.apple.quarantine "/Applications/AI Orchestra.app"`
+> ```bash
+> xattr -dr com.apple.quarantine "/Applications/AI Orchestra.app"
+> ```
 >
-> Or just run it from source (below).
+> Then open the app normally. (You can also try right-click → Open, but the Terminal command
+> always works.) Or just run it from source (below) to skip this entirely.
 
 ## Getting started
 
