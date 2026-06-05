@@ -547,6 +547,17 @@ refreshModelsBtn.addEventListener("click", async () => {
 });
 
 // --- Hakkinda (About) ---
+// Global hata yakalama -> log dosyasina
+window.addEventListener("error", (e) => {
+  try { window.api.logError(`${e.message} @ ${e.filename}:${e.lineno}`); } catch {}
+});
+window.addEventListener("unhandledrejection", (e) => {
+  try { window.api.logError("unhandledrejection: " + (e.reason?.stack || e.reason)); } catch {}
+});
+
+const openLogsLink = $("openLogsLink");
+openLogsLink.addEventListener("click", () => window.api.openLogs());
+
 const aboutBtn = $("aboutBtn");
 const aboutModal = $("aboutModal");
 const closeAbout = $("closeAbout");
@@ -1146,6 +1157,14 @@ copyBtn.addEventListener("click", async () => {
 // =====================================================================
 (async () => {
   config = await window.api.loadConfig();
+
+  // versiyon + tarih (sol panel dibi)
+  try {
+    const b = await window.api.buildInfo();
+    const vt = $("versionTag");
+    if (vt) vt.textContent = `v${b.version}${b.date ? ` (${b.date})` : ""}`;
+  } catch {}
+
   const osLang = await window.api.osLocale();
   // kullanici secimi varsa o; yoksa OS dili
   lang = I18N.normalize(config.lang || osLang);

@@ -1,6 +1,7 @@
 {
   "name": "ai-orchestra",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "releaseDate": "2026-06-05",
   "description": "Ask one question to multiple AIs — they debate each other and you get one unified answer. macOS desktop app.",
   "main": "src/main.js",
   "scripts": {

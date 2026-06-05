@@ -18,6 +18,27 @@ function ensureDataDir() {
   try { fs.mkdirSync(DATA_DIR, { recursive: true }); } catch {}
 }
 
+// --- Hata loglama ---------------------------------------------------------
+const LOG_PATH = () => path.join(DATA_DIR, "error.log");
+function logLine(msg) {
+  try {
+    ensureDataDir();
+    const p = LOG_PATH();
+    // 512KB'i asarsa son yariyi koru (basit rotasyon)
+    try {
+      const st = fs.statSync(p);
+      if (st.size > 512 * 1024) {
+        const tail = fs.readFileSync(p, "utf8").slice(-256 * 1024);
+        fs.writeFileSync(p, tail, "utf8");
+      }
+    } catch {}
+    const line = `[${new Date().toISOString()}] ${msg}\n`;
+    fs.appendFileSync(p, line, "utf8");
+  } catch {}
+}
+process.on("uncaughtException", (e) => logLine("uncaughtException: " + (e && e.stack ? e.stack : e)));
+process.on("unhandledRejection", (e) => logLine("unhandledRejection: " + (e && e.stack ? e.stack : e)));
+
 // Eski konumdan (Application Support) tek seferlik goc
 function migrateLegacyData() {
   ensureDataDir();
@@ -212,6 +233,11 @@ function buildMenu(win) {
         { label: "About AI Orchestra", click: m("about") },
         { label: "Check for Updates…", click: m("check-updates") },
         { type: "separator" },
+        { label: "Open Logs Folder", click: () => {
+            ensureDataDir();
+            if (fs.existsSync(LOG_PATH())) shell.showItemInFolder(LOG_PATH());
+            else shell.openPath(DATA_DIR);
+          } },
         { label: "GitHub", click: () => shell.openExternal(`https://github.com/${REPO}`) },
       ],
     },
@@ -238,6 +264,11 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  // Dev modunda (paketlenmemis) dock ikonu Electron varsayilani olur; kendi logomuzu koy.
+  // Paketli surumde .icns zaten kullanildigi icin dokunmuyoruz.
+  if (!app.isPackaged && process.platform === "darwin" && app.dock) {
+    try { app.dock.setIcon(path.join(__dirname, "vendor", "logos", "app-icon.png")); } catch {}
+  }
   migrateLegacyData();
   const win = createWindow();
   buildMenu(win);
@@ -265,8 +296,26 @@ ipcMain.handle("config:save", (_e, cfg) => {
 // Isletim sistemi dili (kullanici secimi yoksa varsayilan)
 ipcMain.handle("app:locale", () => normalize(app.getLocale()));
 
-// Uygulama surumu
+// Uygulama surumu + yayin tarihi
+let pkgInfo = {};
+try { pkgInfo = require(path.join(__dirname, "..", "package.json")); } catch {}
 ipcMain.handle("app:version", () => app.getVersion());
+ipcMain.handle("app:buildInfo", () => ({
+  version: app.getVersion(),
+  date: pkgInfo.releaseDate || "",
+}));
+
+// Renderer'dan gelen hatalari logla; log dosyasini/klasorunu ac
+ipcMain.handle("log:error", (_e, msg) => logLine("renderer: " + msg));
+ipcMain.handle("log:open", () => {
+  ensureDataDir();
+  try {
+    if (fs.existsSync(LOG_PATH())) shell.showItemInFolder(LOG_PATH());
+    else shell.openPath(DATA_DIR);
+  } catch {
+    shell.openPath(DATA_DIR);
+  }
+});
 
 // Dis baglantilari tarayicida ac (sadece http/https)
 ipcMain.handle("shell:open", (_e, url) => {
@@ -592,6 +641,7 @@ ipcMain.handle("orchestrate:run", async (event, payload) => {
       send({ type: "cancelled" });
       return { ok: false, cancelled: true };
     }
+    logLine("run error: " + (err && err.stack ? err.stack : err.message));
     send({ type: "error", message: err.message });
     return { ok: false, error: err.message };
   } finally {

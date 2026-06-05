@@ -46,6 +46,14 @@ everything into **one clear answer**.
   <em>Left: each model answers, then critiques the others. Right: the judge merges everything into one answer, with per-model token usage.</em>
 </p>
 
+## What's new (v1.1.0)
+
+- Error logging to `~/.ai-orchestra/error.log` (open from Help → Open Logs Folder).
+- Fixed the "app is damaged" message some users saw after downloading.
+- App version and date now shown in the corner.
+
+See the full [CHANGELOG](CHANGELOG.md).
+
 ## How it works
 
 ```

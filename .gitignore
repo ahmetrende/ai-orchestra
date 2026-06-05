@@ -21,3 +21,9 @@ models-cache.json
 *.log
 .vscode/
 .idea/
+
+# Claude Code ile ilgili dosyalar (sadece local kalsın, repoya girmesin)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.cursorrules

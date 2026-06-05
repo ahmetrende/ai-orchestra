@@ -103,6 +103,14 @@ body {
   margin: 16px 6px 6px;
 }
 .hist-list { flex: 1; overflow-y: auto; }
+.version-tag {
+  padding: 8px 6px 2px;
+  font-size: 10.5px;
+  color: var(--muted);
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  -webkit-app-region: no-drag;
+}
 .hist-empty { color: var(--muted); font-size: 12px; padding: 8px 6px; }
 .hist-item {
   position: relative;
@@ -267,6 +275,9 @@ body {
 }
 .about-link:hover { border-color: var(--accent); color: var(--accent); }
 .about-made { color: var(--muted); font-size: 12.5px; margin-bottom: 6px; }
+.about-logs { font-size: 11.5px; margin-bottom: 8px; }
+.about-logs .dl { color: var(--muted); cursor: pointer; text-decoration: underline; }
+.about-logs .dl:hover { color: var(--accent); }
 
 /* Main */
 main {
