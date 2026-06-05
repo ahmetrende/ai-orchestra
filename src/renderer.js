@@ -83,6 +83,13 @@ function applyTheme() {
   const effective = pref === "system" ? (mql.matches ? "light" : "dark") : pref;
   document.documentElement.setAttribute("data-theme", effective);
   if (themeSelect) themeSelect.value = pref;
+  // kod highlight temasini da moda gore degistir
+  const hl = document.getElementById("hljsTheme");
+  if (hl) {
+    hl.href = effective === "light"
+      ? "vendor/hljs-github-light.css"
+      : "vendor/hljs-github-dark.css";
+  }
 }
 mql.addEventListener("change", () => {
   if (!config || (config.theme || "system") === "system") applyTheme();

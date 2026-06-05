@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0 — 2026-06-05
+
+### Fixed
+- Code blocks are now readable in light theme. Syntax highlighting switches between
+  light and dark highlight.js themes based on the active theme (was always dark before).
+
 ## v1.1.0 — 2026-06-05
 
 ### Added
